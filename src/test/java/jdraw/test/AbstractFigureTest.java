@@ -13,7 +13,7 @@ import jdraw.framework.Figure;
 import jdraw.framework.FigureEvent;
 import jdraw.framework.FigureListener;
 
-public class RectangleTest {
+public class AbstractFigureTest {
 
 	private Rect f;
 	private int cnt;

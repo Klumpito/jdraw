@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	DrawModelTest.class,
-	RectangleTest.class
+	AbstractFigureTest.class
 })
 public class JDrawTests {
 }
