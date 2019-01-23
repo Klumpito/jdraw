@@ -1,0 +1,2 @@
+# JDraw
+This is an assignment for the design pattern lecture. The goal is to have an editor that is as extensible and powerful as possible. Each assignment adds an additional design pattern to the mix.
