@@ -24,10 +24,10 @@ public abstract class AbstractFigure implements Figure {
   /**
    * Create a new figure of the given dimension.
    *
-   * @param x the x-coordinate of the upper left corner of the oval
-   * @param y the y-coordinate of the upper left corner of the oval
-   * @param w the oval's width
-   * @param h the oval's height
+   * @param x the x-coordinate of the upper left corner of the figure
+   * @param y the y-coordinate of the upper left corner of the figure
+   * @param w the figure's width
+   * @param h the figure's height
    */
   AbstractFigure(int x, int y, int w, int h) {
     this.bounds = new Rectangle(x, y, w, h);
