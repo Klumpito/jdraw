@@ -9,9 +9,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.List;
 
 import jdraw.framework.Figure;
+import jdraw.framework.FigureEvent;
 import jdraw.framework.FigureHandle;
 import jdraw.framework.FigureListener;
 
@@ -26,6 +28,7 @@ public class Rect implements Figure {
 	 * Use the java.awt.Rectangle in order to save/reuse code.
 	 */
 	private final Rectangle rectangle;
+	private List<FigureListener> listeners;
 	
 	/**
 	 * Create a new rectangle of the given dimension.
@@ -35,7 +38,8 @@ public class Rect implements Figure {
 	 * @param h the rectangle's height
 	 */
 	public Rect(int x, int y, int w, int h) {
-		rectangle = new Rectangle(x, y, w, h);
+		this.rectangle = new Rectangle(x, y, w, h);
+		this.listeners = new ArrayList<>();
 	}
 
 	/**
@@ -52,14 +56,20 @@ public class Rect implements Figure {
 	
 	@Override
 	public void setBounds(Point origin, Point corner) {
-		rectangle.setFrameFromDiagonal(origin, corner);
-		// TODO notification of change
+	  Point original_origin = new Point(rectangle.x, rectangle.y);
+	  Point original_corner = new Point(rectangle.x + rectangle.width, rectangle.y + rectangle.height);
+	  if (!origin.equals(original_origin) || !corner.equals(original_corner)) {
+      rectangle.setFrameFromDiagonal(origin, corner);
+      notifyAllFigureListners();
+    }
 	}
 
 	@Override
 	public void move(int dx, int dy) {
-		rectangle.setLocation(rectangle.x + dx, rectangle.y + dy);
-		// TODO notification of change
+	  if (dx != 0 && dy != 0) {
+      rectangle.setLocation(rectangle.x + dx, rectangle.y + dy);
+      notifyAllFigureListners();
+    }
 	}
 
 	@Override
@@ -84,17 +94,25 @@ public class Rect implements Figure {
 
 	@Override
 	public void addFigureListener(FigureListener listener) {
-		// TODO Auto-generated method stub
+		listeners.add(listener);
 	}
 
 	@Override
 	public void removeFigureListener(FigureListener listener) {
-		// TODO Auto-generated method stub
+		listeners.remove(listener);
 	}
 
 	@Override
 	public Figure clone() {
 		return null;
 	}
+
+  /**
+   * Notifies all currently registered FigureListeners.
+   */
+	private void notifyAllFigureListners () {
+	  List<FigureListener> ls = new ArrayList<>(listeners);
+	  ls.forEach(l -> l.figureChanged(new FigureEvent(this)));
+  }
 
 }
