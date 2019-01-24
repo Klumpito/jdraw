@@ -20,6 +20,7 @@ public abstract class AbstractFigure implements Figure {
    */
   final Rectangle bounds;
   private List<FigureListener> listeners;
+  List<FigureHandle> handles;
 
   /**
    * Create a new figure of the given dimension.
@@ -32,6 +33,7 @@ public abstract class AbstractFigure implements Figure {
   AbstractFigure(int x, int y, int w, int h) {
     this.bounds = new Rectangle(x, y, w, h);
     this.listeners = new ArrayList<>();
+    this.handles = new ArrayList<>();
   }
 
   @Override
@@ -58,6 +60,8 @@ public abstract class AbstractFigure implements Figure {
   @Override
   abstract public boolean contains(int x, int y);
 
+  abstract void addHandels();
+
   @Override
   public Rectangle getBounds() {
     return bounds.getBounds();
@@ -68,10 +72,9 @@ public abstract class AbstractFigure implements Figure {
    *
    * @return all handles that are attached to the targeted figure.
    * @see jdraw.framework.Figure#getHandles()
-   */
-  @Override
+   */@Override
   public List<FigureHandle> getHandles() {
-    return null;
+    return new ArrayList<>(handles);
   }
 
   @Override

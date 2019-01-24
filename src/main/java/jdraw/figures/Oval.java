@@ -5,6 +5,12 @@
 
 package jdraw.figures;
 
+import jdraw.figures.handlers.Handle;
+import jdraw.figures.handlers.locations.East;
+import jdraw.figures.handlers.locations.North;
+import jdraw.figures.handlers.locations.South;
+import jdraw.figures.handlers.locations.West;
+
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
@@ -25,6 +31,7 @@ public class Oval extends AbstractFigure {
    */
   public Oval(int x, int y, int w, int h) {
     super(x, y, w, h);
+    addHandels();
   }
 
   /**
@@ -81,4 +88,11 @@ public class Oval extends AbstractFigure {
     return oval.contains(x, y);
   }
 
+  @Override
+  void addHandels() {
+    handles.add(new Handle(this, new North()));
+    handles.add(new Handle(this, new East()));
+    handles.add(new Handle(this, new South()));
+    handles.add(new Handle(this, new West()));
+  }
 }

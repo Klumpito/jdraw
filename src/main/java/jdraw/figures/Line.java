@@ -5,6 +5,9 @@
 
 package jdraw.figures;
 
+import jdraw.figures.handlers.Handle;
+import jdraw.figures.handlers.locations.*;
+
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -31,6 +34,7 @@ public class Line extends AbstractFigure {
     super(x1, y1, x2, y2);
     startPoint = new Point(x1, y1);
     endPoint = new Point(x1, y1);
+    addHandels();
   }
 
   /**
@@ -104,6 +108,12 @@ public class Line extends AbstractFigure {
   }
 
   @Override
+  void addHandels() {
+    handles.add(new Handle(this, new LineStart()));
+    handles.add(new Handle(this, new LineEnd()));
+  }
+
+  @Override
   public void setBounds(Point origin, Point corner) {
     Point original_origin = new Point(bounds.x, bounds.y);
     Point original_corner = new Point(bounds.x + bounds.width, bounds.y + bounds.height);
@@ -113,5 +123,13 @@ public class Line extends AbstractFigure {
       endPoint = corner;
       notifyAllFigureListners();
     }
+  }
+
+  public Point getStartPoint() {
+    return startPoint;
+  }
+
+  public Point getEndPoint() {
+    return endPoint;
   }
 }
