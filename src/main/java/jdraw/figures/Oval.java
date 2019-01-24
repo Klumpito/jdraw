@@ -6,6 +6,8 @@
 package jdraw.figures;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 /**
  * Represents Ovals in JDraw.
@@ -35,6 +37,48 @@ public class Oval extends AbstractFigure {
     g.fillOval(bounds.x, bounds.y, bounds.width, bounds.height);
     g.setColor(Color.BLACK);
     g.drawOval(bounds.x, bounds.y, bounds.width, bounds.height);
+  }
+
+  @Override
+  public boolean contains(int x, int y) {
+    Ellipse2D oval = new Ellipse2D() {
+      @Override
+      public double getX() {
+        return bounds.x;
+      }
+
+      @Override
+      public double getY() {
+        return bounds.y;
+      }
+
+      @Override
+      public double getWidth() {
+        return bounds.width;
+      }
+
+      @Override
+      public double getHeight() {
+        return bounds.height;
+      }
+
+      @Override
+      public boolean isEmpty() {
+        return false;
+      }
+
+      @Override
+      public void setFrame(double x, double y, double w, double h) {
+
+      }
+
+      @Override
+      public Rectangle2D getBounds2D() {
+        return null;
+      }
+    };
+
+    return oval.contains(x, y);
   }
 
 }

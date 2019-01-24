@@ -6,6 +6,9 @@
 package jdraw.figures;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 /**
  * Represents rectangles in JDraw.
@@ -51,6 +54,53 @@ public class Line extends AbstractFigure {
       bounds.setLocation(bounds.x + dx, bounds.y + dy);
       super.notifyAllFigureListners();
     }
+  }
+
+  @Override
+  public boolean contains(int x, int y) {
+    Line2D line = new Line2D() {
+      @Override
+      public double getX1() {
+        return getX1();
+      }
+
+      @Override
+      public double getY1() {
+        return getY1();
+      }
+
+      @Override
+      public Point2D getP1() {
+        return null;
+      }
+
+      @Override
+      public double getX2() {
+        return getX2();
+      }
+
+      @Override
+      public double getY2() {
+        return getY2();
+      }
+
+      @Override
+      public Point2D getP2() {
+        return null;
+      }
+
+      @Override
+      public void setLine(double x1, double y1, double x2, double y2) {
+
+      }
+
+      @Override
+      public Rectangle2D getBounds2D() {
+        return null;
+      }
+    };
+
+    return line.contains(x, y);
   }
 
   @Override

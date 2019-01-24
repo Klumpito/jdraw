@@ -37,4 +37,9 @@ public class Rect extends AbstractFigure {
     g.setColor(Color.BLACK);
     g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
   }
+
+  @Override
+  public boolean contains(int x, int y) {
+    return bounds.contains(x, y);
+  }
 }

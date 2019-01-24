@@ -56,9 +56,7 @@ public abstract class AbstractFigure implements Figure {
   }
 
   @Override
-  public boolean contains(int x, int y) {
-    return bounds.contains(x, y);
-  }
+  abstract public boolean contains(int x, int y);
 
   @Override
   public Rectangle getBounds() {
