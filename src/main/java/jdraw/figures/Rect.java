@@ -5,6 +5,9 @@
 
 package jdraw.figures;
 
+import jdraw.figures.handlers.Handle;
+import jdraw.figures.handlers.locations.*;
+
 import java.awt.*;
 
 /**
@@ -41,5 +44,17 @@ public class Rect extends AbstractFigure {
   @Override
   public boolean contains(int x, int y) {
     return bounds.contains(x, y);
+  }
+
+  @Override
+  void addHandles() {
+    handles.add(new Handle(this, new NorthWest()));
+    handles.add(new Handle(this, new North()));
+    handles.add(new Handle(this, new NorthEast()));
+    handles.add(new Handle(this, new East()));
+    handles.add(new Handle(this, new SouthEast()));
+    handles.add(new Handle(this, new South()));
+    handles.add(new Handle(this, new SouthWest()));
+    handles.add(new Handle(this, new West()));
   }
 }
