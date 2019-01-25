@@ -26,7 +26,6 @@ public class Rect extends AbstractFigure {
    */
   public Rect(int x, int y, int w, int h) {
     super(x, y, w, h);
-    addHandels();
   }
 
   /**
@@ -48,7 +47,7 @@ public class Rect extends AbstractFigure {
   }
 
   @Override
-  void addHandels() {
+  void addHandles() {
     handles.add(new Handle(this, new NorthWest()));
     handles.add(new Handle(this, new North()));
     handles.add(new Handle(this, new NorthEast()));

@@ -31,7 +31,6 @@ public class Oval extends AbstractFigure {
    */
   public Oval(int x, int y, int w, int h) {
     super(x, y, w, h);
-    addHandels();
   }
 
   /**
@@ -89,7 +88,7 @@ public class Oval extends AbstractFigure {
   }
 
   @Override
-  void addHandels() {
+  void addHandles() {
     handles.add(new Handle(this, new North()));
     handles.add(new Handle(this, new East()));
     handles.add(new Handle(this, new South()));

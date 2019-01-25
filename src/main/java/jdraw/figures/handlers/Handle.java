@@ -5,19 +5,18 @@ import jdraw.framework.*;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.List;
 
 /**
  * This represents the handles of the rect figure.
  *
  * @author Tobias Wilcke
  */
-public class Handle implements FigureHandle, FigureListener {
+public class Handle implements FigureHandle, FigureListener, HandelContext {
 
   /**
    * Holds the central x-,y-coordinates of the handle.
    */
-  final Location LOCATION;
+  Location direction;
 
   /**
    * Holds the owning figure.
@@ -29,11 +28,11 @@ public class Handle implements FigureHandle, FigureListener {
    */
   private Rectangle bounds;
 
-  public Handle(Figure owner, Location location) {
-    LOCATION = location;
+  public Handle(Figure owner, Location direction) {
+    this.direction = direction;
     OWNER = owner;
     OWNER.addFigureListener(this);
-    setBounds(location, owner);
+    setBounds(direction, owner);
   }
 
   @Override
@@ -43,7 +42,7 @@ public class Handle implements FigureHandle, FigureListener {
 
   @Override
   public Point getLocation() {
-    return LOCATION.getPoint(OWNER);
+    return direction.getPoint(OWNER);
   }
 
   @Override
@@ -57,7 +56,7 @@ public class Handle implements FigureHandle, FigureListener {
 
   @Override
   public Cursor getCursor() {
-    return LOCATION.getCursor();
+    return direction.getCursor();
   }
 
   @Override
@@ -71,7 +70,7 @@ public class Handle implements FigureHandle, FigureListener {
 
   @Override
   public void dragInteraction(int x, int y, MouseEvent e, DrawView v) {
-    LOCATION.resize(x, y, OWNER);
+    direction.resize(x, y, OWNER, this);
   }
 
   @Override
@@ -80,14 +79,24 @@ public class Handle implements FigureHandle, FigureListener {
 
   @Override
   public void figureChanged(FigureEvent e) {
-    setBounds(LOCATION, OWNER);
+    setBounds(direction, OWNER);
   }
 
   /**
-   * Setting the bounds based on location on the owner.
+   * Setting the bounds based on direction on the owner.
    */
   private void setBounds(Location l, Figure f) {
     Point p = l.getPoint(f);
     bounds = new Rectangle(p.x - 3, p.y - 3, 6, 6);
+  }
+
+  @Override
+  public void setDirection(Location direction) {
+    this.direction = direction;
+  }
+
+  @Override
+  public Location getDirection() {
+    return direction;
   }
 }

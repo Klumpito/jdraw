@@ -1,6 +1,7 @@
 package jdraw.figures.handlers.locations;
 
 import jdraw.figures.Line;
+import jdraw.figures.handlers.HandelContext;
 import jdraw.framework.Figure;
 
 import java.awt.*;
@@ -22,9 +23,8 @@ public class LineEnd implements Location {
   }
 
   @Override
-  public void resize(int x, int y, Figure f) {
-    Rectangle r = f.getBounds();
-    f.setBounds(new Point(r.x, r.y), new Point(x, y));
+  public void resize(int x, int y, Figure f, HandelContext ctx) {
+    ((Line) f).setEndPoint(new Point(x, y));
   }
 
   @Override

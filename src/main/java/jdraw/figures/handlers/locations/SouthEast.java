@@ -1,6 +1,8 @@
 package jdraw.figures.handlers.locations;
 
+import jdraw.figures.handlers.HandelContext;
 import jdraw.framework.Figure;
+import jdraw.framework.FigureHandle;
 
 import java.awt.*;
 
@@ -19,8 +21,24 @@ public class SouthEast implements Location{
   }
 
   @Override
-  public void resize(int x, int y, Figure f) {
+  public void resize(int x, int y, Figure f, HandelContext ctx) {
     Rectangle r = f.getBounds();
+    if (r.x > x + 1) {
+      for (FigureHandle fh : f.getHandles()) {
+        HandelContext hCtx = (HandelContext) fh;
+        if (hCtx.getDirection() instanceof SouthWest)
+          hCtx.setDirection(new SouthEast());
+      }
+      ctx.setDirection(new SouthWest());
+    }
+    if (r.y > y + 1) {
+      for (FigureHandle fh : f.getHandles()) {
+        HandelContext hCtx = (HandelContext) fh;
+        if (hCtx.getDirection() instanceof NorthEast)
+          hCtx.setDirection(new SouthEast());
+      }
+      ctx.setDirection(new NorthEast());
+    }
     f.setBounds(new Point(r.x, r.y), new Point(x, y));
   }
 

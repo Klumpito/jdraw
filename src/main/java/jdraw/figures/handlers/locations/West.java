@@ -1,6 +1,8 @@
 package jdraw.figures.handlers.locations;
 
+import jdraw.figures.handlers.HandelContext;
 import jdraw.framework.Figure;
+import jdraw.framework.FigureHandle;
 
 import java.awt.*;
 
@@ -19,8 +21,16 @@ public class West implements Location {
   }
 
   @Override
-  public void resize(int x, int y, Figure f) {
+  public void resize(int x, int y, Figure f, HandelContext ctx) {
     Rectangle r = f.getBounds();
+    if (r.x + r.width < x + 1) {
+      for (FigureHandle fh : f.getHandles()) {
+        HandelContext hCtx = (HandelContext) fh;
+        if (hCtx.getDirection() instanceof East)
+          hCtx.setDirection(new West());
+      }
+      ctx.setDirection(new East());
+    }
     f.setBounds(new Point(x, r.y), new Point(r.x + r.width, r.y + r.height));
   }
 

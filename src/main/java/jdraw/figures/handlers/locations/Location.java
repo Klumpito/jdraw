@@ -1,5 +1,6 @@
 package jdraw.figures.handlers.locations;
 
+import jdraw.figures.handlers.HandelContext;
 import jdraw.framework.Figure;
 
 import java.awt.*;
@@ -12,5 +13,5 @@ import java.awt.*;
 public interface Location {
   Point getPoint(Figure f);
   Cursor getCursor();
-  void resize(int x, int y, Figure f);
+  void resize(int x, int y, Figure f, HandelContext ctx);
 }

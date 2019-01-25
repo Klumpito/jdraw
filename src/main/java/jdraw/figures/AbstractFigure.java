@@ -34,6 +34,7 @@ public abstract class AbstractFigure implements Figure {
     this.bounds = new Rectangle(x, y, w, h);
     this.listeners = new ArrayList<>();
     this.handles = new ArrayList<>();
+    addHandles();
   }
 
   @Override
@@ -60,7 +61,7 @@ public abstract class AbstractFigure implements Figure {
   @Override
   abstract public boolean contains(int x, int y);
 
-  abstract void addHandels();
+  abstract void addHandles();
 
   @Override
   public Rectangle getBounds() {

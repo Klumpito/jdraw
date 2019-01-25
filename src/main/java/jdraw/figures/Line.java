@@ -14,7 +14,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Represents rectangles in JDraw.
+ * Represents Line in JDraw. It is a special litle kid. As it requires only a start and end point which must not be in correspondence of the boundary of the rectangle.
  *
  * @author Tobias Wilcke
  */
@@ -33,8 +33,10 @@ public class Line extends AbstractFigure {
   public Line(int x1, int y1, int x2, int y2) {
     super(x1, y1, x2, y2);
     startPoint = new Point(x1, y1);
+    // x2 and y2 are set to 0 and therefore are problematic
     endPoint = new Point(x1, y1);
-    addHandels();
+    // recall handle adding to use start and end point parameters
+    addHandles();
   }
 
   /**
@@ -108,9 +110,11 @@ public class Line extends AbstractFigure {
   }
 
   @Override
-  void addHandels() {
-    handles.add(new Handle(this, new LineStart()));
-    handles.add(new Handle(this, new LineEnd()));
+  void addHandles() {
+    if (startPoint != null) {
+      handles.add(new Handle(this, new LineStart()));
+      handles.add(new Handle(this, new LineEnd()));
+    }
   }
 
   @Override
@@ -131,5 +135,15 @@ public class Line extends AbstractFigure {
 
   public Point getEndPoint() {
     return endPoint;
+  }
+
+  public void setStartPoint(Point startPoint) {
+    this.startPoint = startPoint;
+    setBounds(startPoint, endPoint);
+  }
+
+  public void setEndPoint(Point endPoint) {
+    this.endPoint = endPoint;
+    setBounds(startPoint, endPoint);
   }
 }
