@@ -10,3 +10,8 @@ The Observer Pattern is implemented for the `DrawView` (observer), `DrawModel` (
 Last Commit: ff17b0c
 
 After adding the new Figures `Line` and `Oval` there was a lot of copy paste code; for both the `Figure` and for the `FigureTool`. This is why all of this code got abstracted and overwritten where necessary.
+
+## Assignment 4 - Handles
+Last Commit: 5b87054
+
+Each `Figure` now can add it's own handles. Each handle has a set direction, which can change if the figure gets mirrored.
