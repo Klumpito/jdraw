@@ -47,41 +47,7 @@ public class Oval extends AbstractFigure {
 
   @Override
   public boolean contains(int x, int y) {
-    Ellipse2D oval = new Ellipse2D() {
-      @Override
-      public double getX() {
-        return bounds.x;
-      }
-
-      @Override
-      public double getY() {
-        return bounds.y;
-      }
-
-      @Override
-      public double getWidth() {
-        return bounds.width;
-      }
-
-      @Override
-      public double getHeight() {
-        return bounds.height;
-      }
-
-      @Override
-      public boolean isEmpty() {
-        return false;
-      }
-
-      @Override
-      public void setFrame(double x, double y, double w, double h) {
-
-      }
-
-      @Override
-      public Rectangle2D getBounds2D() {
-        return null;
-      }
+    Ellipse2D oval = new BoundOval() {
     };
 
     return oval.contains(x, y);
@@ -93,5 +59,42 @@ public class Oval extends AbstractFigure {
     handles.add(new Handle(this, new East()));
     handles.add(new Handle(this, new South()));
     handles.add(new Handle(this, new West()));
+  }
+
+  class BoundOval extends Ellipse2D{
+    @Override
+    public double getX() {
+      return bounds.x;
+    }
+
+    @Override
+    public double getY() {
+      return bounds.y;
+    }
+
+    @Override
+    public double getWidth() {
+      return bounds.width;
+    }
+
+    @Override
+    public double getHeight() {
+      return bounds.height;
+    }
+
+    @Override
+    public boolean isEmpty() {
+      return false;
+    }
+
+    @Override
+    public void setFrame(double x, double y, double w, double h) {
+
+    }
+
+    @Override
+    public Rectangle2D getBounds2D() {
+      return null;
+    }
   }
 }

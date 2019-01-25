@@ -64,47 +64,7 @@ public class Line extends AbstractFigure {
 
   @Override
   public boolean contains(int x, int y) {
-    Line2D line = new Line2D() {
-      @Override
-      public double getX1() {
-        return getX1();
-      }
-
-      @Override
-      public double getY1() {
-        return getY1();
-      }
-
-      @Override
-      public Point2D getP1() {
-        return null;
-      }
-
-      @Override
-      public double getX2() {
-        return getX2();
-      }
-
-      @Override
-      public double getY2() {
-        return getY2();
-      }
-
-      @Override
-      public Point2D getP2() {
-        return null;
-      }
-
-      @Override
-      public void setLine(double x1, double y1, double x2, double y2) {
-
-      }
-
-      @Override
-      public Rectangle2D getBounds2D() {
-        return null;
-      }
-    };
+    Line2D line = new BoundLine();
 
     return line.contains(x, y);
   }
@@ -145,5 +105,47 @@ public class Line extends AbstractFigure {
   public void setEndPoint(Point endPoint) {
     this.endPoint = endPoint;
     setBounds(startPoint, endPoint);
+  }
+
+  class BoundLine extends Line2D {
+    @Override
+    public double getX1() {
+      return getX1();
+    }
+
+    @Override
+    public double getY1() {
+      return getY1();
+    }
+
+    @Override
+    public Point2D getP1() {
+      return null;
+    }
+
+    @Override
+    public double getX2() {
+      return getX2();
+    }
+
+    @Override
+    public double getY2() {
+      return getY2();
+    }
+
+    @Override
+    public Point2D getP2() {
+      return null;
+    }
+
+    @Override
+    public void setLine(double x1, double y1, double x2, double y2) {
+
+    }
+
+    @Override
+    public Rectangle2D getBounds2D() {
+      return null;
+    }
   }
 }
