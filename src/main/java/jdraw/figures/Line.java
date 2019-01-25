@@ -110,32 +110,32 @@ public class Line extends AbstractFigure {
   class BoundLine extends Line2D {
     @Override
     public double getX1() {
-      return getX1();
+      return startPoint.x;
     }
 
     @Override
     public double getY1() {
-      return getY1();
+      return startPoint.y;
     }
 
     @Override
     public Point2D getP1() {
-      return null;
+      return startPoint;
     }
 
     @Override
     public double getX2() {
-      return getX2();
+      return endPoint.x;
     }
 
     @Override
     public double getY2() {
-      return getY2();
+      return endPoint.y;
     }
 
     @Override
     public Point2D getP2() {
-      return null;
+      return endPoint;
     }
 
     @Override
