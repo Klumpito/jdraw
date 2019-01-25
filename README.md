@@ -15,3 +15,10 @@ After adding the new Figures `Line` and `Oval` there was a lot of copy paste cod
 Last Commit: 5b87054
 
 Each `Figure` now can add it's own handles. Each handle has a set direction, which can change if the figure gets mirrored.
+
+##Assignment 5 - Grids
+Last Commit: 6003806
+
+Honestly I only added grids, and they do kinda work, and registered them. But some how the thing thinks: "Hey it would be very interessting to work differently, like not displaying the special handle cursor, even though I request it.". Anyway the `SnapGrid` simply implements the `DrawGrid` and is passed called on request via the Edit menu.
+
+I litterly have no clue why it now deciedes not to display the different cursours or not move at all. All I implemented was the snapping to points!
