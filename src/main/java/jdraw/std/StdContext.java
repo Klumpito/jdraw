@@ -24,6 +24,7 @@ import jdraw.framework.DrawTool;
 import jdraw.framework.DrawToolFactory;
 import jdraw.framework.DrawView;
 import jdraw.framework.Figure;
+import jdraw.std.grids.SnapGrid;
 
 /**
  * Standard implementation of interface DrawContext.
@@ -131,10 +132,17 @@ public class StdContext extends AbstractContext {
 		orderMenu.add(backItem);
 		editMenu.add(orderMenu);
 
+		// TODO: register Grids here
 		JMenu grid = new JMenu("Grid...");
-		grid.add("Grid 1");
-		grid.add("Grid 2");
-		grid.add("Grid 3");
+    JMenuItem snapGrid5 = new JMenuItem("Snap-Grid (5)");
+    snapGrid5.addActionListener(e -> getView().setGrid(new SnapGrid(5)));
+    grid.add(snapGrid5);
+    JMenuItem snapGrid10 = new JMenuItem("Snap-Grid (10)");
+    snapGrid10.addActionListener(e -> getView().setGrid(new SnapGrid(10)));
+    grid.add(snapGrid10);
+		JMenuItem noGrid = new JMenuItem("Free Flow Grid");
+    noGrid.addActionListener(e -> getView().setGrid(null));
+		grid.add(noGrid);
 		editMenu.add(grid);
 		
 		return editMenu;

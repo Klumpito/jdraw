@@ -87,7 +87,7 @@ public class Handle implements FigureHandle, FigureListener, HandelContext {
    */
   private void setBounds(Location l, Figure f) {
     Point p = l.getPoint(f);
-    bounds = new Rectangle(p.x - 3, p.y - 3, 6, 6);
+    bounds = new Rectangle(p.x - 4, p.y - 4, 8, 8);
   }
 
   @Override
