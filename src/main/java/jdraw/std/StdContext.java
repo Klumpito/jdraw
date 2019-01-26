@@ -137,9 +137,12 @@ public class StdContext extends AbstractContext {
     JMenuItem snapGrid5 = new JMenuItem("Snap-Grid (5)");
     snapGrid5.addActionListener(e -> getView().setGrid(new SnapGrid(5)));
     grid.add(snapGrid5);
-    JMenuItem snapGrid10 = new JMenuItem("Snap-Grid (10)");
-    snapGrid10.addActionListener(e -> getView().setGrid(new SnapGrid(10)));
-    grid.add(snapGrid10);
+		JMenuItem snapGrid10 = new JMenuItem("Snap-Grid (10)");
+		snapGrid10.addActionListener(e -> getView().setGrid(new SnapGrid(10)));
+		grid.add(snapGrid10);
+		JMenuItem snapGrid100 = new JMenuItem("Snap-Grid (100)");
+		snapGrid100.addActionListener(e -> getView().setGrid(new SnapGrid(100)));
+		grid.add(snapGrid100);
 		JMenuItem noGrid = new JMenuItem("Free Flow Grid");
     noGrid.addActionListener(e -> getView().setGrid(null));
 		grid.add(noGrid);
