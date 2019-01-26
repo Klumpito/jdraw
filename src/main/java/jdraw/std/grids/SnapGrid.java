@@ -21,16 +21,12 @@ public class SnapGrid implements DrawGrid {
 
   @Override
   public int getStepX(boolean right) {
-    if (right)
-      return stepSize;
-    return -stepSize;
+    return stepSize;
   }
 
   @Override
   public int getStepY(boolean down) {
-    if (down)
-      return stepSize;
-    return -stepSize;
+    return stepSize;
   }
 
   @Override
