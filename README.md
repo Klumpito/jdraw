@@ -19,6 +19,4 @@ Each `Figure` now can add it's own handles. Each handle has a set direction, whi
 ## Assignment 5 - Grids
 Last Commit: 6003806
 
-Honestly I only added grids, and they do kinda work, and registered them. But some how the thing thinks: "Hey it would be very interessting to work differently, like not displaying the special handle cursor, even though I request it.". Anyway the `SnapGrid` simply implements the `DrawGrid` and is passed called on request via the Edit menu.
-
-I litterly have no clue why it now deciedes not to display the different cursours or not move at all. All I implemented was the snapping to points!
+The system now supports snap grids, though they don't draw these annoying background lines. The grid size can be passed to the `SnapGrid`. Registering new grids is simply done in the `StdContext`.
