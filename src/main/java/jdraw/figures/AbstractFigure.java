@@ -37,6 +37,10 @@ public abstract class AbstractFigure implements Figure {
     addHandles();
   }
 
+  AbstractFigure(Point p1, Point p2) {
+    this(p1.x, p1.y, p2.x-p1.x, p2.y-p1.y);
+  }
+
   @Override
   abstract public void draw(Graphics g);
 

@@ -24,6 +24,11 @@ public class Handle implements FigureHandle, FigureListener, HandelContext {
   final Figure OWNER;
 
   /**
+   * Holds the color to display the handle.
+   */
+  private Color color;
+
+  /**
    * Holds the the bounds of the handle.
    */
   private Rectangle bounds;
@@ -32,7 +37,13 @@ public class Handle implements FigureHandle, FigureListener, HandelContext {
     this.direction = direction;
     OWNER = owner;
     OWNER.addFigureListener(this);
+    color = Color.white;
     setBounds(direction, owner);
+  }
+
+  public Handle(Figure owner, Location direction, Color color) {
+    this(owner, direction);
+    this.color = color;
   }
 
   @Override
@@ -47,7 +58,7 @@ public class Handle implements FigureHandle, FigureListener, HandelContext {
 
   @Override
   public void draw(Graphics g) {
-    g.setColor(Color.WHITE);
+    g.setColor(color);
     g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
     g.setColor(Color.BLACK);
     g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
