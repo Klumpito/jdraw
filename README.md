@@ -41,4 +41,9 @@ Each Figure and consequent used class (`Handles`) now are serializable and can b
 ## Assignment 9 - Decorators
 Last Commit: 5bd1547
 
-The abstract class `Decorator` makes sure that each decorator knows its own figure it decorates. But it is up to each implementing class to make sure that the figure methods are called! 
+The abstract class `Decorator` makes sure that each decorator knows its own figure it decorates. But it is up to each implementing class to make sure that the figure methods are called!
+
+## Assignment 10 - Commands
+Last Commit: cc3bc62
+
+The `CommandHandler` implements the command pattern. Most of the commands are already implemented, with the exception of the `InsertFigureCommand` which has been added and is used by the `AbstractFigure` class.
