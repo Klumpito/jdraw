@@ -10,6 +10,7 @@ import jdraw.figures.handlers.locations.East;
 import jdraw.figures.handlers.locations.North;
 import jdraw.figures.handlers.locations.South;
 import jdraw.figures.handlers.locations.West;
+import jdraw.framework.Figure;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -59,6 +60,11 @@ public class Oval extends AbstractFigure {
     handles.add(new Handle(this, new East()));
     handles.add(new Handle(this, new South()));
     handles.add(new Handle(this, new West()));
+  }
+
+  @Override
+  public Figure clone() {
+    return new Oval(bounds.x, bounds.y, bounds.width, bounds.height);
   }
 
   class BoundOval extends Ellipse2D{

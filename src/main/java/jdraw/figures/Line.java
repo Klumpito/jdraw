@@ -7,6 +7,7 @@ package jdraw.figures;
 
 import jdraw.figures.handlers.Handle;
 import jdraw.figures.handlers.locations.*;
+import jdraw.framework.Figure;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
@@ -75,6 +76,11 @@ public class Line extends AbstractFigure {
       handles.add(new Handle(this, new LineStart()));
       handles.add(new Handle(this, new LineEnd()));
     }
+  }
+
+  @Override
+  public Figure clone() {
+    return new Line(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
   }
 
   @Override

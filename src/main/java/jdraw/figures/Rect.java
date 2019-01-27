@@ -7,6 +7,7 @@ package jdraw.figures;
 
 import jdraw.figures.handlers.Handle;
 import jdraw.figures.handlers.locations.*;
+import jdraw.framework.Figure;
 
 import java.awt.*;
 
@@ -56,5 +57,10 @@ public class Rect extends AbstractFigure {
     handles.add(new Handle(this, new South()));
     handles.add(new Handle(this, new SouthWest()));
     handles.add(new Handle(this, new West()));
+  }
+
+  @Override
+  public Figure clone() {
+    return new Rect(bounds.x, bounds.y, bounds.width, bounds.height);
   }
 }

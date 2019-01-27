@@ -41,6 +41,10 @@ public abstract class AbstractFigure implements Figure {
     this(p1.x, p1.y, p2.x-p1.x, p2.y-p1.y);
   }
 
+  AbstractFigure (Figure f) {
+    this(f.getBounds().x, f.getBounds().y, f.getBounds().width, f.getBounds().height);
+  }
+
   @Override
   abstract public void draw(Graphics g);
 
@@ -93,9 +97,7 @@ public abstract class AbstractFigure implements Figure {
   }
 
   @Override
-  public Figure clone() {
-    return null;
-  }
+  abstract public Figure clone();
 
   /**
    * Notifies all currently registered FigureListeners.
