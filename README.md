@@ -20,3 +20,10 @@ Each `Figure` now can add it's own handles. Each handle has a set direction, whi
 Last Commit: 6003806
 
 The system now supports snap grids, though they don't draw these annoying background lines. The grid size can be passed to the `SnapGrid`. Registering new grids is simply done in the `StdContext`.
+
+## Assignment 6 - Composition
+Last Commit: 0971131
+
+A new Figure has been added `CompositeFigureImpl`, it allows to group at least two Figures. For this a new Interface has been added, he `CompositeFigure`. This new Figure also implements the `AbstractFigure` but overwrites more methods.
+
+To mark the `CompositeFigure` the Handles now accept a colour for the handle, so that each figure has control over it. 
