@@ -8,6 +8,7 @@ import jdraw.figures.handlers.locations.SouthWest;
 import jdraw.framework.Figure;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,6 +52,14 @@ public class CompositeFigureImpl extends AbstractFigure implements CompositeFigu
     handles.add(new Handle(this, new NorthEast(), Color.GRAY));
     handles.add(new Handle(this, new SouthWest(), Color.GRAY));
     handles.add(new Handle(this, new SouthEast(), Color.GRAY));
+  }
+
+  @Override
+  public Figure clone() {
+    // Deep Copy
+    List<Figure> fs = new ArrayList<>();
+    figures.forEach(f -> fs.add(f.clone()));
+    return new CompositeFigureImpl(fs);
   }
 
   /**

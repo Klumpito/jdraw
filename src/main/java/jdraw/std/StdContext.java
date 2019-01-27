@@ -11,7 +11,9 @@ import jdraw.std.grids.SnapGrid;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.datatransfer.Clipboard;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,6 +26,8 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class StdContext extends AbstractContext {
+  private List<Figure> clipboard;
+
   /**
    * Constructs a standard context with a default set of drawing tools.
    *
@@ -86,10 +90,34 @@ public class StdContext extends AbstractContext {
       }
     );
 
+    //TODO: implement copy'n'paste
     editMenu.addSeparator();
-    editMenu.add("Cut").setEnabled(false);
-    editMenu.add("Copy").setEnabled(false);
-    editMenu.add("Paste").setEnabled(false);
+    JMenuItem cut = new JMenuItem("Cut");
+    cut.addActionListener(e -> {
+      clipboard = getView().getSelection();
+      clipboard.forEach(f -> {
+        getModel().removeFigure(f);
+      });
+    });
+    editMenu.add(cut);
+    JMenuItem copy = new JMenuItem("Copy");
+    copy.addActionListener(e -> {
+      List<Figure> fs = getView().getSelection();
+      List<Figure> newClip = new ArrayList<>();
+      fs.forEach(f -> newClip.add(f.clone()));
+      clipboard = newClip;
+    });
+    editMenu.add(copy);
+    JMenuItem paste = new JMenuItem("Paste");
+    paste.addActionListener(e ->{
+      if(clipboard != null && clipboard.size() > 0) {
+        clipboard.forEach(f -> {
+          getModel().addFigure(f);
+          getView().addToSelection(f);
+        });
+      }
+    });
+    editMenu.add(paste);
 
     editMenu.addSeparator();
     JMenuItem clear = new JMenuItem("Clear");
@@ -101,7 +129,6 @@ public class StdContext extends AbstractContext {
     //TODO: implement group/ungroup here
     editMenu.addSeparator();
     JMenuItem group = new JMenuItem("Group");
-    group.setEnabled(true);
     group.addActionListener(e -> {
       List<Figure> fs = getView().getSelection();
       if (fs.size() > 1) {
@@ -114,7 +141,6 @@ public class StdContext extends AbstractContext {
     editMenu.add(group);
 
     JMenuItem ungroup = new JMenuItem("Ungroup");
-    ungroup.setEnabled(true);
     ungroup.addActionListener(e -> {
       List<Figure> fs = getView().getSelection();
       fs.forEach(f -> {
