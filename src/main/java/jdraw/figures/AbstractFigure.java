@@ -41,7 +41,7 @@ public abstract class AbstractFigure implements Figure {
     this(p1.x, p1.y, p2.x-p1.x, p2.y-p1.y);
   }
 
-  AbstractFigure (Figure f) {
+  protected AbstractFigure(Figure f) {
     this(f.getBounds().x, f.getBounds().y, f.getBounds().width, f.getBounds().height);
   }
 
@@ -69,7 +69,7 @@ public abstract class AbstractFigure implements Figure {
   @Override
   abstract public boolean contains(int x, int y);
 
-  abstract void addHandles();
+  protected abstract void addHandles();
 
   @Override
   public Rectangle getBounds() {

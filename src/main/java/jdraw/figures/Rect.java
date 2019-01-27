@@ -48,7 +48,7 @@ public class Rect extends AbstractFigure {
   }
 
   @Override
-  void addHandles() {
+  protected void addHandles() {
     handles.add(new Handle(this, new NorthWest()));
     handles.add(new Handle(this, new North()));
     handles.add(new Handle(this, new NorthEast()));

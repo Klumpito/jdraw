@@ -71,7 +71,7 @@ public class Line extends AbstractFigure {
   }
 
   @Override
-  void addHandles() {
+  protected void addHandles() {
     if (startPoint != null) {
       handles.add(new Handle(this, new LineStart()));
       handles.add(new Handle(this, new LineEnd()));

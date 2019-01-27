@@ -5,6 +5,8 @@
 package jdraw.std;
 
 import jdraw.figures.*;
+import jdraw.figures.decorators.BorderDecorator;
+import jdraw.figures.decorators.LogDecorator;
 import jdraw.framework.*;
 import jdraw.std.grids.SnapGrid;
 
@@ -185,6 +187,32 @@ public class StdContext extends AbstractContext {
     noGrid.addActionListener(e -> getView().setGrid(null));
     grid.add(noGrid);
     editMenu.add(grid);
+
+    editMenu.addSeparator();
+    JMenu decorators = new JMenu("Decorator...");
+    JMenuItem border = new JMenuItem("Border");
+    border.addActionListener(e -> {
+      List<Figure> fs = getView().getSelection();
+      fs.forEach(f -> {
+        getModel().removeFigure(f);
+        Figure borderF = new BorderDecorator(f);
+        getModel().addFigure(borderF);
+        getView().addToSelection(borderF);
+      });
+    });
+    decorators.add(border);
+    JMenuItem logger = new JMenuItem("Logger");
+    logger.addActionListener(e -> {
+      List<Figure> fs = getView().getSelection();
+      fs.forEach(f -> {
+        getModel().removeFigure(f);
+        Figure borderF = new LogDecorator(f);
+        getModel().addFigure(borderF);
+        getView().addToSelection(borderF);
+      });
+    });
+    decorators.add(logger);
+    editMenu.add(decorators);
 
     return editMenu;
   }

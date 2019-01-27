@@ -37,3 +37,8 @@ Each figure implementation now must implement it's own clone. The `CompositeFigu
 Last Commit: 750dc7a
 
 Each Figure and consequent used class (`Handles`) now are serializable and can be written to a file. To mark the end of file a new class `EOFFigure` is added, which does nothing but sit at the end of the file.
+
+## Assignment 9 - Decorators
+Last Commit: 5bd1547
+
+The abstract class `Decorator` makes sure that each decorator knows its own figure it decorates. But it is up to each implementing class to make sure that the figure methods are called! 
