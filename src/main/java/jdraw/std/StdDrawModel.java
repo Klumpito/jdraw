@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jdraw.framework.*;
+import jdraw.std.commands.CommandHandler;
 
 /**
  * Provide a standard behavior for the drawing model. This class initially does not implement the methods

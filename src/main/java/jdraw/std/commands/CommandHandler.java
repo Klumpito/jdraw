@@ -1,4 +1,4 @@
-package jdraw.std;
+package jdraw.std.commands;
 
 import jdraw.framework.DrawCommand;
 import jdraw.framework.DrawCommandHandler;

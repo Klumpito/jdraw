@@ -21,6 +21,7 @@ import jdraw.framework.DrawTool;
 import jdraw.framework.DrawView;
 import jdraw.framework.Figure;
 import jdraw.framework.FigureHandle;
+import jdraw.std.commands.MoveCommand;
 
 /**
  * The default tool is used for figure selection and general manipulation of one or more figures.
@@ -242,7 +243,7 @@ public class StdSelectionTool implements DrawTool {
 
 		for (Figure f : view.getSelection()) {
 			f.move(k, l);
-			view.getModel().getDrawCommandHandler().addCommand(new MoveCommand(f, k, l));			
+			view.getModel().getDrawCommandHandler().addCommand(new MoveCommand(f, k, l));
 		}
 
 		tempX = i;

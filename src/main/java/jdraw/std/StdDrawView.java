@@ -29,6 +29,8 @@ import jdraw.framework.DrawView;
 import jdraw.framework.Figure;
 import jdraw.framework.FigureHandle;
 import jdraw.framework.DrawGrid;
+import jdraw.std.commands.MoveCommand;
+import jdraw.std.commands.RemoveFigureCommand;
 
 /**
  * Standard implementation of interface DrawView.
