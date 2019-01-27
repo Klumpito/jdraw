@@ -1,4 +1,4 @@
-package jdraw.figures.handlers.locations;
+package jdraw.figures.handlers.directions;
 
 import jdraw.figures.handlers.HandelContext;
 import jdraw.framework.Figure;
@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * @author Tobias Wilcke
  */
-public class SouthEast implements Location{
+public class SouthEast implements Direction {
   @Override
   public Point getPoint(Figure f) {
     return new Point(f.getBounds().x + f.getBounds().width, f.getBounds().y + f.getBounds().height);

@@ -1,11 +1,11 @@
 package jdraw.figures.handlers;
 
-import jdraw.figures.handlers.locations.Location;
+import jdraw.figures.handlers.directions.Direction;
 
 /**
  * @author Tobias Wilcke
  */
 public interface HandelContext {
-  void setDirection(Location direction);
-  Location getDirection();
+  void setDirection(Direction direction);
+  Direction getDirection();
 }

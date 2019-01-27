@@ -6,10 +6,10 @@
 package jdraw.figures;
 
 import jdraw.figures.handlers.Handle;
-import jdraw.figures.handlers.locations.East;
-import jdraw.figures.handlers.locations.North;
-import jdraw.figures.handlers.locations.South;
-import jdraw.figures.handlers.locations.West;
+import jdraw.figures.handlers.directions.East;
+import jdraw.figures.handlers.directions.North;
+import jdraw.figures.handlers.directions.South;
+import jdraw.figures.handlers.directions.West;
 import jdraw.framework.Figure;
 
 import java.awt.*;

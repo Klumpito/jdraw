@@ -6,10 +6,10 @@
 package jdraw.std;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import jdraw.framework.*;
+import jdraw.std.commands.CommandHandler;
 
 /**
  * Provide a standard behavior for the drawing model. This class initially does not implement the methods
@@ -64,7 +64,7 @@ public class StdDrawModel implements DrawModel, FigureListener {
 
 	/** The draw command handler. Initialized here with a dummy implementation. */
 	// TODO initialize with your implementation of the undo/redo-assignment.
-	private DrawCommandHandler handler = new EmptyDrawCommandHandler();
+	private DrawCommandHandler handler = new CommandHandler();
 
 	/**
 	 * Retrieve the draw command handler in use.
