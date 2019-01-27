@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * @author Tobias Wilcke
  */
-public class SnapGrid implements DrawGrid {
+public class SnapGrid extends AbstractGrid {
   private final int stepSize;
 
   public SnapGrid(int stepSize) {
@@ -27,25 +27,5 @@ public class SnapGrid implements DrawGrid {
   @Override
   public int getStepY(boolean down) {
     return stepSize;
-  }
-
-  @Override
-  public void activate() {
-
-  }
-
-  @Override
-  public void deactivate() {
-
-  }
-
-  @Override
-  public void mouseDown() {
-
-  }
-
-  @Override
-  public void mouseUp() {
-
   }
 }
