@@ -26,4 +26,9 @@ Last Commit: 0971131
 
 A new Figure has been added `CompositeFigureImpl`, it allows to group at least two Figures. For this a new Interface has been added, he `CompositeFigure`. This new Figure also implements the `AbstractFigure` but overwrites more methods.
 
-To mark the `CompositeFigure` the Handles now accept a colour for the handle, so that each figure has control over it. 
+To mark the `CompositeFigure` the Handles now accept a colour for the handle, so that each figure has control over it.
+
+## Assignment 7 - Copy, Cut and Paste
+Laste Commit: 9f16bf2
+
+Each figure implementation now must implement it's own clone. The `CompositeFigureImpl` implements a deep copy. Also the GUI elements are implemented and activated.
