@@ -47,7 +47,7 @@ public class CompositeFigureImpl extends AbstractFigure implements CompositeFigu
   }
 
   @Override
-  void addHandles() {
+  protected void addHandles() {
     handles.add(new Handle(this, new NorthWest(), Color.GRAY));
     handles.add(new Handle(this, new NorthEast(), Color.GRAY));
     handles.add(new Handle(this, new SouthWest(), Color.GRAY));
