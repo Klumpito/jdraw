@@ -11,8 +11,7 @@ import jdraw.std.grids.SnapGrid;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.datatransfer.Clipboard;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -109,8 +108,8 @@ public class StdContext extends AbstractContext {
     });
     editMenu.add(copy);
     JMenuItem paste = new JMenuItem("Paste");
-    paste.addActionListener(e ->{
-      if(clipboard != null && clipboard.size() > 0) {
+    paste.addActionListener(e -> {
+      if (clipboard != null && clipboard.size() > 0) {
         clipboard.forEach(f -> {
           getModel().addFigure(f);
           getView().addToSelection(f);
@@ -292,6 +291,20 @@ public class StdContext extends AbstractContext {
       if (filter instanceof FileNameExtensionFilter && !filter.accept(file)) {
         file = new File(chooser.getCurrentDirectory(), file.getName() + "." + ((FileNameExtensionFilter) filter).getExtensions()[0]);
       }
+
+      try {
+        FileOutputStream fos = new FileOutputStream(file);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        Iterable<Figure> fs = getModel().getFigures();
+        for (Figure f : fs) {
+          oos.writeObject(f.clone());
+        }
+
+        oos.writeObject(new EOFFigure());
+        oos.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
       System.out.println("save current graphic to file " + file.getName() + " using format "
         + ((FileNameExtensionFilter) filter).getExtensions()[0]);
     }
@@ -319,7 +332,18 @@ public class StdContext extends AbstractContext {
     int res = chooser.showOpenDialog(this);
 
     if (res == JFileChooser.APPROVE_OPTION) {
-      // read jdraw graphic
+      try {
+        FileInputStream fis = new FileInputStream(chooser.getSelectedFile());
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Object figure =  ois.readObject();
+        while (!(figure instanceof EOFFigure)) {
+          getModel().addFigure((Figure) figure);
+          figure = ois.readObject();
+        }
+        ois.close();
+      } catch (IOException | ClassNotFoundException e) {
+        e.printStackTrace();
+      }
       System.out.println("read file "
         + chooser.getSelectedFile().getName());
     }

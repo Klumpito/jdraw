@@ -32,3 +32,8 @@ To mark the `CompositeFigure` the Handles now accept a colour for the handle, so
 Laste Commit: 9f16bf2
 
 Each figure implementation now must implement it's own clone. The `CompositeFigureImpl` implements a deep copy. Also the GUI elements are implemented and activated.
+
+## Assignment 8 - Save and Load
+Last Commit: 750dc7a
+
+Each Figure and consequent used class (`Handles`) now are serializable and can be written to a file. To mark the end of file a new class `EOFFigure` is added, which does nothing but sit at the end of the file.
