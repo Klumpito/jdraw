@@ -5,13 +5,14 @@ import jdraw.framework.*;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 
 /**
  * This represents the handles of the rect figure.
  *
  * @author Tobias Wilcke
  */
-public class Handle implements FigureHandle, FigureListener, HandelContext {
+public class Handle implements FigureHandle, FigureListener, HandelContext, Serializable {
 
   /**
    * Holds the central x-,y-coordinates of the handle.
