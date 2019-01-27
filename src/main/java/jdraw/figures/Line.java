@@ -6,7 +6,7 @@
 package jdraw.figures;
 
 import jdraw.figures.handlers.Handle;
-import jdraw.figures.handlers.locations.*;
+import jdraw.figures.handlers.directions.*;
 import jdraw.framework.Figure;
 
 import java.awt.*;

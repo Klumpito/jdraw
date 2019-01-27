@@ -1,6 +1,6 @@
 package jdraw.figures.handlers;
 
-import jdraw.figures.handlers.locations.Location;
+import jdraw.figures.handlers.directions.Direction;
 import jdraw.framework.*;
 
 import java.awt.*;
@@ -17,7 +17,7 @@ public class Handle implements FigureHandle, FigureListener, HandelContext, Seri
   /**
    * Holds the central x-,y-coordinates of the handle.
    */
-  Location direction;
+  Direction direction;
 
   /**
    * Holds the owning figure.
@@ -34,7 +34,7 @@ public class Handle implements FigureHandle, FigureListener, HandelContext, Seri
    */
   private Rectangle bounds;
 
-  public Handle(Figure owner, Location direction) {
+  public Handle(Figure owner, Direction direction) {
     this.direction = direction;
     OWNER = owner;
     OWNER.addFigureListener(this);
@@ -42,7 +42,7 @@ public class Handle implements FigureHandle, FigureListener, HandelContext, Seri
     setBounds(direction, owner);
   }
 
-  public Handle(Figure owner, Location direction, Color color) {
+  public Handle(Figure owner, Direction direction, Color color) {
     this(owner, direction);
     this.color = color;
   }
@@ -97,18 +97,18 @@ public class Handle implements FigureHandle, FigureListener, HandelContext, Seri
   /**
    * Setting the bounds based on direction on the owner.
    */
-  private void setBounds(Location l, Figure f) {
+  private void setBounds(Direction l, Figure f) {
     Point p = l.getPoint(f);
     bounds = new Rectangle(p.x - 4, p.y - 4, 8, 8);
   }
 
   @Override
-  public void setDirection(Location direction) {
+  public void setDirection(Direction direction) {
     this.direction = direction;
   }
 
   @Override
-  public Location getDirection() {
+  public Direction getDirection() {
     return direction;
   }
 }

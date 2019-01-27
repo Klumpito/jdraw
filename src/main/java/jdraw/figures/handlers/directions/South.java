@@ -1,4 +1,4 @@
-package jdraw.figures.handlers.locations;
+package jdraw.figures.handlers.directions;
 
 import jdraw.figures.handlers.HandelContext;
 import jdraw.framework.Figure;
@@ -9,33 +9,33 @@ import java.awt.*;
 /**
  * @author Tobias Wilcke
  */
-public class West implements Location {
+public class South implements Direction {
   @Override
   public Point getPoint(Figure f) {
-    return new Point(f.getBounds().x, f.getBounds().y + (f.getBounds().height / 2));
+    return new Point(f.getBounds().x + (f.getBounds().width / 2), f.getBounds().y + f.getBounds().height);
   }
 
   @Override
   public Cursor getCursor() {
-    return Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR);
+    return Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR);
   }
 
   @Override
   public void resize(int x, int y, Figure f, HandelContext ctx) {
     Rectangle r = f.getBounds();
-    if (r.x + r.width < x + 1) {
+    if (r.y > y + 1) {
       for (FigureHandle fh : f.getHandles()) {
         HandelContext hCtx = (HandelContext) fh;
-        if (hCtx.getDirection() instanceof East)
-          hCtx.setDirection(new West());
+        if (hCtx.getDirection() instanceof North)
+          hCtx.setDirection(new South());
       }
-      ctx.setDirection(new East());
+      ctx.setDirection(new North());
     }
-    f.setBounds(new Point(x, r.y), new Point(r.x + r.width, r.y + r.height));
+    f.setBounds(new Point(r.x, r.y), new Point(r.x + r.width, y));
   }
 
   @Override
   public String toString() {
-    return "West";
+    return "South";
   }
 }
